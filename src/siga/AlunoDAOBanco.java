@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class AlunoDAOBanco implements AlunoDAO {
+    @Override
     public void inserir(Aluno aluno) {
         String sql = "INSERT INTO aluno (nome, matricula, media) VALUES ('"
                 + aluno.getNome() + "', '"
@@ -36,7 +37,6 @@ public class AlunoDAOBanco implements AlunoDAO {
         List<Aluno> alunos = new ArrayList<>();
 
         for (String linha : linhas) {
-            System.out.println(linha);
             alunos.add(parseLinhaAluno(linha));
         }
 

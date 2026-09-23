@@ -1,8 +1,8 @@
-# SIGA — Atividade de Persistência e padrão DAO (código inicial)
+# SIGA — Atividade de Persistência e padrão DAO (código final)
 
 **Técnicas de Programação II (TP2) · Aula 7** — CST em Desenvolvimento de Software Multiplataforma · Fatec de Porto Ferreira
 
-Este é o **código inicial** da atividade prática da Aula 7. Ele contém, de forma **proposital**, comandos SQL misturados à regra de negócio. O programa compila e executa — o problema não é o funcionamento, e sim o acoplamento entre domínio e tecnologia de persistência.
+Este é o **código final** da atividade prática da Aula 7. Ele continha, de forma **proposital**, comandos SQL misturados à regra de negócio. O programa compilava e executava — o problema não era o funcionamento, e sim o acoplamento entre domínio e tecnologia de persistência.
 
 ## Estrutura do projeto
 
@@ -12,8 +12,11 @@ siga-dao/
     └── siga/
         ├── Aluno.java             (entidade de domínio; pronta)
         ├── BancoSimulado.java     (simula o banco; representa a tecnologia)
-        ├── ServicoMatricula.java  (contém os problemas a refatorar)
-        └── Main.java              (demonstra os problemas em execução)
+        ├── AlunoDAO.java          (interface do padrão DAO, na linguagem do domínio)
+        ├── AlunoDAOMemoria.java   (implementação do DAO com Map em memória)
+        ├── AlunoDAOBanco.java     (implementação do DAO usando o BancoSimulado)
+        ├── ServicoMatricula.java  (regra de negócio, refatorada para depender só de AlunoDAO)
+        └── Main.java              (demonstra a troca de implementação do DAO)
 ```
 
 > O `BancoSimulado` existe apenas para o projeto rodar **sem** um servidor de banco instalado. Trate-o como se fosse o driver JDBC real: é a tecnologia da qual a regra de negócio não deveria depender. Não é necessário alterá-lo.
@@ -40,7 +43,7 @@ java -cp bin siga.Main
 
 Consequência prática: para testar a regra "a média não pode ser negativa", seria preciso ter um banco disponível. Testar um `if` exigindo infraestrutura é sinal de design acoplado.
 
-## Sua tarefa
+## tarefa realizadas
 
 Siga as etapas da ficha de atividade prática:
 

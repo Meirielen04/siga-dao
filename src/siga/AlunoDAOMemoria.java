@@ -23,7 +23,6 @@ public class AlunoDAOMemoria implements AlunoDAO {
     public List<Aluno> listarTodos() {
         return new ArrayList<>(armazem.values());
     }
-    
 
     @Override 
     public void atualizar(Aluno aluno) {
